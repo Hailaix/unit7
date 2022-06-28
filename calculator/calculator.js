@@ -21,7 +21,10 @@ function getCurrentUIValues() {
 // Put some default values in the inputs
 // Call a function to calculate the current monthly payment
 function setupIntialValues() {
-
+  document.getElementById("loan-amount").value = 100;
+  document.getElementById("loan-years").value = 1;
+  document.getElementById("loan-rate").value = 10;
+  update();
 }
 
 // Get the current values from the UI
@@ -34,10 +37,17 @@ function update() {
 // calculate the monthly payment.  The output should be a string
 // that always has 2 decimal places.
 function calculateMonthlyPayment(values) {
+  let pir = values['rate']/12;
+  console.log(`periodic interest rate = ${pir}`);
+  let nop = values['years']*12*-1;
+  console.log(`number of payments = ${nop}`);
+  let monpay = (values['amount'] * pir) / (1 - Math.pow((1 + pir),(nop)));
+  console.log(monpay);
+  return `$ ${monpay.toFixed(2)}`;
 }
 
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
 function updateMonthly(monthly) {
-  document.getElementById("monthly-payment").value = monthly;
+  document.getElementById("monthly-payment").innerText = monthly;
 }
