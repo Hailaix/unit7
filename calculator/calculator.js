@@ -23,7 +23,7 @@ function getCurrentUIValues() {
 function setupIntialValues() {
   document.getElementById("loan-amount").value = 100;
   document.getElementById("loan-years").value = 1;
-  document.getElementById("loan-rate").value = 10;
+  document.getElementById("loan-rate").value = 1;
   update();
 }
 
@@ -37,11 +37,15 @@ function update() {
 // calculate the monthly payment.  The output should be a string
 // that always has 2 decimal places.
 function calculateMonthlyPayment(values) {
-  let pir = values['rate']/12;
+  let pir = values['rate']/1200; //periodic interest rate
   console.log(`periodic interest rate = ${pir}`);
-  let nop = values['years']*12*-1;
+  let nop = values['years']*12; //number of payments
   console.log(`number of payments = ${nop}`);
-  let monpay = (values['amount'] * pir) / (1 - Math.pow((1 + pir),(nop)));
+  let divisor = (1 - Math.pow((1 + pir),(-nop)));
+  let monpay = 0;
+  if (divisor !== 0){ //prevent divison by 0 (if rate is 0)
+    monpay = (values['amount'] * pir) / divisor;
+  }
   console.log(monpay);
   return `$ ${monpay.toFixed(2)}`;
 }
