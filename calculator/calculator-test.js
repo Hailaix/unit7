@@ -33,5 +33,4 @@ it("not sure if intended, but loans without rates in the equation require no pay
     rate: '0'
   })).toEqual('$ 0.00');
 });
-}
 /// etc
