@@ -41,16 +41,12 @@ function calculateMonthlyPayment(values) {
     return 'Please input valid numbers'
   } else {
     let pir = values['rate'] / 1200; //periodic interest rate
-    console.log(`periodic interest rate = ${pir}`);
     let nop = values['years'] * 12; //number of payments
-    console.log(`number of payments = ${nop}`);
     let divisor = (1 - Math.pow((1 + pir), (-nop)));
     let monpay = 0;
-    console.log(`Math is ${values['amount'] * pir} divided by ${divisor}`)
     if (divisor !== 0) { //prevent divison by 0 (if rate is 0)
       monpay = (values['amount'] * pir) / divisor;
     }
-    console.log(monpay);
     return `$ ${monpay.toFixed(2)}`;
   }
 }
