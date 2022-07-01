@@ -24,3 +24,15 @@ function appendTd(tr, value) {
 
   tr.append(newTd);
 }
+function appendDeleteBtn(tr){
+  let newTd = document.createElement('td');
+  newTd.innerText = 'X';
+  newTd.addEventListener('click', function(e){
+    delete allServers[e.target.parentNode.id];
+    delete allPayments[e.target.parentNode.id];
+    tr.parentNode.removeChild(tr); //payment table removal
+    updateServerTable(); //to update when a payment leaves but the server remains
+    updateSummary();
+    });
+  tr.append(newTd);
+}

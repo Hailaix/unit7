@@ -29,7 +29,7 @@ describe('payments tests', function () {
     it('should append to the payment table on appendPaymentTable()', function(){
         appendPaymentTable(createCurPayment());
         let testpaymenttr = document.querySelector('#paymentTable tbody tr')
-        expect(testpaymenttr.childElementCount).toEqual(3);
+        expect(testpaymenttr.childElementCount).toEqual(4);
         expect(testpaymenttr.children[0].innerHTML).toEqual('$10');
         expect(testpaymenttr.children[1].innerHTML).toEqual('$2');
         expect(testpaymenttr.children[2].innerHTML).toEqual('20%');

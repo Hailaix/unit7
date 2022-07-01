@@ -13,7 +13,7 @@ describe("Servers test (with setup and tear-down)", function () {
   it('should add a new element to servertable on updateServerTable()', function () {
     submitServerInfo(); //updateServerTable is called within
     let serverTableBody = document.querySelector('#serverTable tbody tr'); //selects the new tr added by updateServerTable
-    expect(serverTableBody.childElementCount).toEqual(2);
+    expect(serverTableBody.childElementCount).toEqual(3);
     expect(serverTableBody.children[0].innerHTML).toEqual('Alice');
     expect(serverTableBody.children[1].innerHTML).toEqual('$0.00');
   });
