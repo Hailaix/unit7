@@ -10,7 +10,7 @@ describe("Servers test (with setup and tear-down)", function () {
     expect(Object.keys(allServers).length).toEqual(1);
     expect(allServers['server' + serverId].serverName).toEqual('Alice');
   });
-  it('should add a new element to servertable on updateServerTable()', function(){
+  it('should add a new element to servertable on updateServerTable()', function () {
     submitServerInfo(); //updateServerTable is called within
     let serverTableBody = document.querySelector('#serverTable tbody tr'); //selects the new tr added by updateServerTable
     expect(serverTableBody.childElementCount).toEqual(2);
